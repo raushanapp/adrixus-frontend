@@ -10,15 +10,17 @@ function Register() {
                 <FormWrapper onSubmit={handleSubmit(onSubmit)}>
                     <HeadingWrapper>Registration</HeadingWrapper>  
                     <LabelWrapper>
-                        <label htmlFor="">
+                        <LabelSide htmlFor="">
                             First Name
-                        </label>
+                        </LabelSide>
                             <InputWrapper  {...register("firstName", { required: true, maxLength: 20 })} />
-                            <label htmlFor="">Last Name</label>
+                            <LabelSide htmlFor="">Last Name</LabelSide>
                             <InputWrapper {...register("lastName", { pattern: /^[A-Za-z]+$/i })} />
-                            <label htmlFor="">Email</label>
+                            <EmailWrapper htmlFor="">Email</EmailWrapper>
                             <InputWrapper type="email" {...register("email",{required:true})} />
-                            <label htmlFor="">Password</label>
+                            <LabelSide htmlFor="">Password</LabelSide>
+                            <InputWrapper type="password" {...register("password", { min: 6, max: 15 })} />
+                            <ConfirmWrapper htmlFor=""> Confirm Password</ConfirmWrapper>
                             <InputWrapper type="password" {...register("password",{min:6,max:15})} />
                             <TypeSubmitWrapper  type="submit" value={"Sign Up"} />
                         <span>Already have an account?<Link to='/login' >Login</Link></span>
@@ -53,7 +55,7 @@ height: 24px;
 font-family: 'Lato';
 font-style: normal;
 font-weight: 700;
-font-size: 20px;
+font-size: 25px;
 line-height: 14px;
 color: #000000;
 flex: none;
@@ -64,7 +66,7 @@ flex-grow: 0;
 const FormWrapper = styled.form`
 /* Auto layout */
 display: flex;
-border:1px solid #ccc;
+/* border:1px solid #ccc; */
 flex-direction: column;
 align-items: center;
 padding: 0px;
@@ -78,7 +80,7 @@ flex-grow: 0;
 `
 const LabelWrapper=styled.div`
     display: flex;
-    border:1px solid red;
+    /* border:1px solid red; */
    flex-direction: column;
  align-items: center;
  padding: 0px;
@@ -91,9 +93,10 @@ const InputWrapper=styled.input`
     width:380px;
     height:25px;
     font-family: 'Lato';
+    border-radius:5px;
  font-style: normal;
  padding:5px;
- font-size:17px
+ font-size:18px
 `
 const  TypeSubmitWrapper=styled.input`
     /* padding:20px; */
@@ -107,4 +110,26 @@ const  TypeSubmitWrapper=styled.input`
  color:white;
  text-align:center;
  cursor:pointer;
+ border-radius:5px;
+`
+const LabelSide=styled.label`
+    margin-left:-315px;
+    font-size:18px;
+    line-height:10px;
+    font-family: 'Lato';
+   font-style: normal;
+`
+const ConfirmWrapper=styled.label`
+margin-left:-260px;
+    font-size:18px;
+    line-height:10px;
+    font-family: 'Lato';
+   font-style: normal;
+`
+const EmailWrapper=styled.label`
+margin-left:-345px;
+    font-size:18px;
+    line-height:10px;
+    font-family: 'Lato';
+   font-style: normal;
 `
