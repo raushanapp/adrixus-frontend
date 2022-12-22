@@ -1,8 +1,25 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import {CiSearch} from "react-icons/ci"
-function SearchSort({searchHandle}) {
+// import { useDispatch, useSelector } from 'react-redux';
+// import { searchApiCall } from '../Redux/UserReducer/action';
+function SearchSort({searchHandle,sortHandle}) {
+    // const [search, setSearch] = useState();
+    // const dispatch = useDispatch();
+    // const data = useSelector(state => state.user.data);
+    // const searchHandle = (e) => {
+    //     if (e.key === 'Enter') {
+    //         setSearch(e.target.value);
+    //     }
+    // }
     
+    // useEffect(() => {
+    //     if (data?.length !== 0) {
+    //         dispatch(searchApiCall(search))
+    //     }
+    // }, [ data?.length,dispatch, search])
+    // console.log(search)
+    // console.log(data)
 
   return (
       <>
@@ -12,7 +29,7 @@ function SearchSort({searchHandle}) {
           </SearchDivWrapper>
           
           {/* sort */}
-          <SelectWrapper name="sortByAge" id="age" >
+          <SelectWrapper name="sortByAge" id="age" onChange={sortHandle} >
               <option value="">Sort By Age</option>
               <option value="age">Low To High</option>
               <option value="-age">High To Low</option>

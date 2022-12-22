@@ -2,7 +2,7 @@ import React from 'react'
 import styled from"styled-components"
 function UserCard({data,index}) {
   return (
-    <tr>
+    <tr key={data.id}>
           <TdWrapper>{ index+1}</TdWrapper>   
           <TdWrapper>{ `${data.first_name}  ${data.last_name}`}</TdWrapper>   
           <TdWrapper>{ data.email}</TdWrapper>   

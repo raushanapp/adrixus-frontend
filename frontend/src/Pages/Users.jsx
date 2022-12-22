@@ -3,43 +3,55 @@ import Navbar from '../Components/Navbar'
 import SearchSort from '../Components/SearchSort'
 import styled from "styled-components";
 import { useDispatch, useSelector } from 'react-redux';
-import { userApiCall } from '../Redux/UserReducer/action';
+import { searchApiCall, sortApiCall, userApiCall } from '../Redux/UserReducer/action';
 import UserCard from '../Components/UserCard';
 function Users() {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.user.data);
   // const [users,setUsers] =useState()
-  const [serach, setSearch] = useState("");
+  const [search, setSearch] = useState("");
+  // search part 
   const searchHandle = (e) => {
     if (e.key === "Enter") {
       setSearch(e.target.value)
     }
   }
+  // sort part 
+  const sortHandle = (e) => {
+        // console.log(e.target.value)
+        setSearch(e.target.value)
+    }
   useEffect(() => {
     if (data?.length === 0) {
       dispatch(userApiCall())
     }
+    else if (search === "-age" || search === "age") {
+        dispatch(sortApiCall(search))
+    }
+    else {
+      dispatch(searchApiCall(search))
+    }
     
-  },[data?.length, dispatch])
-  console.log(data)
+  },[data?.length, dispatch, search])
+  
   return (
     <>
       <Navbar />
       <SearchWrapper>
-        <SearchSort searchHandle={searchHandle} />
+        <SearchSort  searchHandle={searchHandle} sortHandle={sortHandle} />
       </SearchWrapper>
       <TableWrapper>
         <tr>
           <ThWrapper>No.</ThWrapper>
-          <ThWrapper>User Name</ThWrapper>
+          <ThWrapper>Full Name</ThWrapper>
           <ThWrapper>Email</ThWrapper>
           <ThWrapper>Age</ThWrapper>
           <ThWrapper>Registration Date</ThWrapper>
         </tr>
         {data?.users?.length > 0 && data?.users.map((el, index) => (
-          <tbody>
-            <UserCard key={index} index={index}data={el} />
-          </tbody>
+          // <tbody>
+            <UserCard key={el.id} index={index}data={el} />
+          // </tbody>
           
         ))}
       </TableWrapper>
