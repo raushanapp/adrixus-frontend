@@ -13,15 +13,15 @@ function Register() {
                         <LabelSide htmlFor="">
                             First Name
                         </LabelSide>
-                            <InputWrapper  {...register("firstName", { required: true, maxLength: 20 })} />
+                            <InputWrapper  placeholder='Enter first name' {...register("firstName", { required: true, maxLength: 20 })} />
                             <LabelSide htmlFor="">Last Name</LabelSide>
-                            <InputWrapper {...register("lastName", { pattern: /^[A-Za-z]+$/i })} />
+                            <InputWrapper placeholder='Enter last name' {...register("lastName", { pattern: /^[A-Za-z]+$/i })} />
                             <EmailWrapper htmlFor="">Email</EmailWrapper>
-                            <InputWrapper type="email" {...register("email",{required:true})} />
+                            <InputWrapper type="email" placeholder='Enter email' {...register("email",{required:true})} />
                             <LabelSide htmlFor="">Password</LabelSide>
-                            <InputWrapper type="password" {...register("password", { min: 6, max: 15 })} />
+                            <InputWrapper type="password" placeholder='Enter password' {...register("password", { min: 6, max: 15 })} />
                             <ConfirmWrapper htmlFor=""> Confirm Password</ConfirmWrapper>
-                            <InputWrapper type="password" {...register("password",{min:6,max:15})} />
+                            <InputWrapper type="password" placeholder='Enter confirm password ' {...register("password",{min:6,max:15})} />
                             <TypeSubmitWrapper  type="submit" value={"Sign Up"} />
                         <span>Already have an account?<Link to='/login' >Login</Link></span>
                     </LabelWrapper>
