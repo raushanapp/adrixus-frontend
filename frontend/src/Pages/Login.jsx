@@ -1,15 +1,37 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { loginApiCall } from '../Redux/AuthReducer/action';
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const user = useSelector(state => state.auth.data);
+
     const sendingRequest = () => {
         console.log(email, password)
-        setEmail("")
-        setPassword("")
-
+        if (email && password) {
+            dispatch(loginApiCall({ email, password }))
+                .then((r) => {
+                    if (r.type === "LOGIN_SUCCESS") {
+                        alert("Login Successfully")
+                        navigate("/users/dashborad")
+                        console.log(user)
+                        localStorage.setItem("data", JSON.stringify(user));
+                    }
+                    else {
+                        alert("Please check email and pasword")
+                        navigate("/login")
+                        
+                    }
+            });
+        }
+        // setEmail("")
     }
+    
+    // console.log(user,"user")
   return (
       <MainWrapper>
         <HeadingWrapper>Log In</HeadingWrapper>

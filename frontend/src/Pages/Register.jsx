@@ -1,10 +1,24 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
+import { useDispatch } from 'react-redux';
+import { registerApiCall } from '../Redux/AuthReducer/action';
 function Register() {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const { register, handleSubmit } = useForm();
-  const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+        if (data) {
+          
+            dispatch(registerApiCall(data)).then((r) => {
+                if (r.type === "REGISTER_SUCCESS") {
+                    alert("Registration Successfull");
+                    navigate("/login");
+                }
+            })
+      }
+  }
     return (
         <RegistionWrapper>
                 <FormWrapper onSubmit={handleSubmit(onSubmit)}>
@@ -13,9 +27,9 @@ function Register() {
                         <LabelSide htmlFor="">
                             First Name
                         </LabelSide>
-                            <InputWrapper  placeholder='Enter first name' {...register("firstName", { required: true, maxLength: 20 })} />
+                            <InputWrapper  placeholder='Enter first name' {...register("first_name", { required: true, maxLength: 20 })} />
                             <LabelSide htmlFor="">Last Name</LabelSide>
-                            <InputWrapper placeholder='Enter last name' {...register("lastName", { pattern: /^[A-Za-z]+$/i })} />
+                            <InputWrapper placeholder='Enter last name' {...register("last_name", { pattern: /^[A-Za-z]+$/i })} />
                             <EmailWrapper htmlFor="">Email</EmailWrapper>
                             <InputWrapper type="email" placeholder='Enter email' {...register("email",{required:true})} />
                             <LabelSide htmlFor="">Password</LabelSide>

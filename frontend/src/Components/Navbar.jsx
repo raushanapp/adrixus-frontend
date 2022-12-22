@@ -1,13 +1,20 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+const user = JSON.parse(localStorage.getItem("data")) || '';
 function Navbar() {
+  const navigate = useNavigate();
+  const logout = () => {
+    localStorage.removeItem("user");
+    navigate("/login");
+  }
   return (
     <NavbarWrapper>
       <HedaingWrapper>User</HedaingWrapper>
       <AdminWrapper>
-        <PtagWrapper>test | admin</PtagWrapper>
+        <PtagWrapper>{`${user?.user?.first_name} | admin`}</PtagWrapper>
         {/* <p></p>  */}
-        <ButtonWrapper>Logout</ButtonWrapper>
+        <ButtonWrapper onClick={logout}>Logout</ButtonWrapper>
       </AdminWrapper>
     </NavbarWrapper>
   )
