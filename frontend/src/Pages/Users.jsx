@@ -9,7 +9,6 @@ import Pagination from '../Components/Pagination';
 function Users() {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.user.data);
-  // const [users,setUsers] =useState()
   const [search, setSearch] = useState("");
   // search part 
   const searchHandle = (e) => {
@@ -97,7 +96,7 @@ const ThWrapper=styled.th`
 
 const PaginationWrapper=styled.div`
   display:flex;
-  border:2px solid #ccc;
+  /* border:2px solid #ccc; */
   width:40%;
   height:40px;
   margin:auto;
@@ -107,4 +106,5 @@ const PaginationWrapper=styled.div`
   border-radius:5px;
   padding:5px 0px 5px 0px;
   margin-top:30px;
+  /* overflow:hidden; */
 `

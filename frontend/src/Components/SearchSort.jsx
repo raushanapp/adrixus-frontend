@@ -4,22 +4,6 @@ import {CiSearch} from "react-icons/ci"
 // import { useDispatch, useSelector } from 'react-redux';
 // import { searchApiCall } from '../Redux/UserReducer/action';
 function SearchSort({searchHandle,sortHandle}) {
-    // const [search, setSearch] = useState();
-    // const dispatch = useDispatch();
-    // const data = useSelector(state => state.user.data);
-    // const searchHandle = (e) => {
-    //     if (e.key === 'Enter') {
-    //         setSearch(e.target.value);
-    //     }
-    // }
-    
-    // useEffect(() => {
-    //     if (data?.length !== 0) {
-    //         dispatch(searchApiCall(search))
-    //     }
-    // }, [ data?.length,dispatch, search])
-    // console.log(search)
-    // console.log(data)
 
   return (
       <>

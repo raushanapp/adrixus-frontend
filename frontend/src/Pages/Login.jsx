@@ -16,7 +16,7 @@ function Login() {
             dispatch(loginApiCall({ email, password }))
                 .then((r) => {
                     if (r.type === "LOGIN_SUCCESS") {
-                        // console.log(user,"localstorage")
+                        console.log(user,"localstorage")
                         localStorage.setItem("data", JSON.stringify(user));
                         alert("Login Successfully")
                         navigate("/users/dashborad")
@@ -31,7 +31,7 @@ function Login() {
         // setEmail("")
     }
     
-    // console.log(user,"user")
+    console.log(user,"user")
   return (
       <MainWrapper>
         <HeadingWrapper>Log In</HeadingWrapper>
