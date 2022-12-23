@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from 'react-redux';
 import { searchApiCall, sortApiCall, userApiCall } from '../Redux/UserReducer/action';
 import UserCard from '../Components/UserCard';
+import Pagination from '../Components/Pagination';
 function Users() {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.user.data);
@@ -55,7 +56,10 @@ function Users() {
           
         ))}
       </TableWrapper>
-      
+      {/* pagination section import here components */}
+      <PaginationWrapper>
+        <Pagination />
+      </PaginationWrapper>
     </>
   )
 }
@@ -89,4 +93,18 @@ const ThWrapper=styled.th`
    border: 1px solid #ccc;
   text-align: left;
   padding: 15px;
+`
+
+const PaginationWrapper=styled.div`
+  display:flex;
+  border:2px solid #ccc;
+  width:40%;
+  height:40px;
+  margin:auto;
+  align-items:center;
+  justify-content:space-between;
+  gap:5px;
+  border-radius:5px;
+  padding:5px 0px 5px 0px;
+  margin-top:30px;
 `

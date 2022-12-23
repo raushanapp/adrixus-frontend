@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-const user = JSON.parse(localStorage.getItem("data")) || '';
+const user = JSON.parse(localStorage.getItem("data")) ||'';
+// const user = localStorage.getItem("data")||'';
+
 function Navbar() {
   const navigate = useNavigate();
-  const logout = () => {
-    localStorage.removeItem("user");
+  const logout =useCallback (() => {
     navigate("/login");
-  }
+    localStorage.removeItem("data");
+  },[navigate])
+  // console.log("navbar",user?.user?.first_name)
   return (
     <NavbarWrapper>
       <HedaingWrapper>User</HedaingWrapper>
